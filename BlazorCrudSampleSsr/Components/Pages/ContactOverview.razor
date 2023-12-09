@@ -16,6 +16,7 @@ else{
                 <th>Name</th>
                 <th>Family Name</th>
                 <th>Phone Number</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -25,12 +26,13 @@ else{
                 <td>@contact.Name</td>
                 <td>@contact.SirName</td>
                 <td>@contact.PhoneNumber</td>
+                <td><a href="edit-contact/@contact.Id">Edit</a></td>
             </tr>
         } 
         </tbody>
     </table>
 }
-
+<a href="edit-contact">Add a new contact</a>
 
 @code {
     List<Contact> Contacts = new List<Contact>();
