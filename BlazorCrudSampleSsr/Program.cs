@@ -1,5 +1,6 @@
 using BlazorCrudSampleSsr.Components;
 using BlazorCrudSampleSsr.Data;
+using BlazorCrudSampleSsr.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,8 @@ builder.Services.AddRazorComponents();
 
 builder.Services.AddDbContext<ApplicationDbContext>(
     option => option.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+
+//builder.Services.AddScoped<IContactRepository, ContactRepository>();
 
 var app = builder.Build();
 

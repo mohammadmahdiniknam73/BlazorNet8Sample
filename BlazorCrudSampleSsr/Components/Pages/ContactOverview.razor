@@ -1,0 +1,44 @@
+﻿@page "/contact"
+@inject ApplicationDbContext Context
+@attribute [StreamRendering]
+
+<PageTitle>Contacts</PageTitle>
+<h3>Contacts</h3>
+
+@if(Contacts.Count == 0)
+{
+    <p><em>Loading Contacts ...</em></p>    
+}
+else{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Family Name</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach(var contact in Contacts)
+        {
+            <tr>
+                <td>@contact.Name</td>
+                <td>@contact.SirName</td>
+                <td>@contact.PhoneNumber</td>
+            </tr>
+        } 
+        </tbody>
+    </table>
+}
+
+
+@code {
+    List<Contact> Contacts = new List<Contact>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(1000);
+        Contacts = await Context.Contacts.ToListAsync();
+    }
+
+}
